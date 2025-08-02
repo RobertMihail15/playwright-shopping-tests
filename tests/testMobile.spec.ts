@@ -5,12 +5,12 @@ import { PageManager } from '../page-objects/PageManager';
 test('search products', async({page})=>{
     await page.goto('https://automationexercise.com/')
     const pm = new PageManager(page)
-    await pm.acceptConsent()
+    await pm.navigationPage.acceptConsent()
     test.setTimeout(120000);
-    await pm.navigateTo.ProductsPage()
+    await pm.navigationPage.goToProductsPage()
 
-    await pm.searchOverEveryProduct()
+    await pm.productPage.searchOverEveryProduct()
 
-    await pm.submitSearchButton.click()
+    await pm.productPage.submitSearchButton.click()
     
 })

@@ -10,10 +10,6 @@ export class RegisterForm{
         return this.page.locator('.signup-form').getByRole('textbox', {name: 'Email Address'})
     }
 
-    get emailLoginInput(){
-        return this.page.locator('.login-form').getByRole('textbox', {name: 'Email Address'})
-    }
-
     get passwordInput(){
         return this.page.locator('.login-form').getByRole('textbox', {name: 'Password'})
     }
@@ -86,6 +82,10 @@ export class RegisterForm{
         return this.page.locator('.btn',{hasText: 'Continue'})
     }
 
+    get messageUserAlreadyExists(){
+        return this.page.locator('.signup-form p')
+    }
+
     genderRadioButtton(gender :number){
         return this.page.locator(`#id_gender${gender}`)
     }
@@ -129,12 +129,6 @@ export class RegisterForm{
         await this.createAccountButton.click()
         await this.page.waitForTimeout(2000)
         await this.continueButton.click()
-    }
-
-    async submitLoginFormWithEmailAndPassword(email: string, password: string){
-        await this.emailLoginInput.fill(email)
-        await this.passwordInput.fill(password)
-        await this.loginButton.click()
     }
 
     async submitRegisterFormWithUsernameAndEmail(username: string, email: string){
